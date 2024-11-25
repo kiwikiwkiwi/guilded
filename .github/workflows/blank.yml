@@ -1,0 +1,28 @@
+name: Run Python Script on Push
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow on push to the main branch
+  workflow_dispatch:  # Allow manual execution of the workflow
+
+jobs:
+  run-loop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3  # Fetch the code from your repo
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # Specify the Python version
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt || echo "No dependencies to install"
+
+      - name: Run the Script
+        run: |
+          python loop_script.py
