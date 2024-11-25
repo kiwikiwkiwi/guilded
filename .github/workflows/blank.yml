@@ -25,4 +25,4 @@ jobs:
 
       - name: Run the Script
         run: |
-          python loop_script.py
+          python python_loop.py
